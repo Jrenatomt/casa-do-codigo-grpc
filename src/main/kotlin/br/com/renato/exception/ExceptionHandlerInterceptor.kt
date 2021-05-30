@@ -26,6 +26,7 @@ class ExceptionHandlerInterceptor : MethodInterceptor<BindableService, Any> {
 
             val statusError = when (e) {
                 is EmailDuplicadoException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
+                is CategoriaDuplicadaException -> Status.ALREADY_EXISTS.withDescription(e.message).asRuntimeException()
                 is IllegalStateException -> Status.FAILED_PRECONDITION.withDescription(e.message).asRuntimeException()
                 is IllegalArgumentException -> Status.INVALID_ARGUMENT.withDescription(e.message).asRuntimeException()
                 is ConstraintViolationException -> handleConstraintValidationException(e)

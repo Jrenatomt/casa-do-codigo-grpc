@@ -14,7 +14,6 @@ fun NovoAutorRequest.toModel(): Autor {
 fun NovoAutorRequest.valida(): ErrorMessage? {
 
     val emailValido = "[A-Za-z0-9_-]+@[A-Za-z]+\\.[A-Za-z]+".toRegex()
-
     if (nome.isBlank()) return ErrorMessage("O nome deve ser informado")
     if (email.isBlank()) return ErrorMessage("O e-mail deve ser informado")
     if (!email.matches(emailValido)) return ErrorMessage("E-mail no formato inválido")
